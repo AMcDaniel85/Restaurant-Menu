@@ -5,13 +5,29 @@ import java.util.Date;
 
 public class Menu {
     private String nameOfRestaurant;
-    private ArrayList<MenuItem> menu;
+    public ArrayList<MenuItem> menu;
     private Date lastUpdated;
+
+    public Menu(ArrayList<MenuItem> menu){
+        this.setMenu(menu);
+
+        Date d = new Date();
+        this.lastUpdated = d;
+    }
 
     public void addNewItem(MenuItem newItem){
         this.menu.add(newItem);
-        Date d = new Date();
-        this.lastUpdated = d;
+    }
+    public void removeItem(MenuItem item){
+        this.menu.remove(item);
+    }
+
+    public void print(){
+        System.out.println("*****");
+        for(MenuItem item : this.menu){
+            item.print();
+            System.out.println("*****");
+        }
     }
 
     public String getNameOfRestaurant() {
@@ -29,4 +45,14 @@ public class Menu {
     public void setMenu(ArrayList<MenuItem> menu) {
         this.menu = menu;
     }
+
+    public Date getLastUpdated() {
+        return lastUpdated;
+    }
+
+    public void setLastUpdated(Date lastUpdated) {
+        Date d = new Date();
+        this.lastUpdated = d;
+    }
+
 }
